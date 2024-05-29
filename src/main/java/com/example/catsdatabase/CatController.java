@@ -10,14 +10,14 @@ import java.util.List;
 @RestController
 public class CatController {
 
-    private CatMapper catMapper;
+    private CatService catService;
 
-    public CatController(CatMapper catMapper) {
-        this.catMapper = catMapper;
+    public CatController(CatService catService) {
+        this.catService = catService;
     }
 
     @GetMapping("/cats")
     public List<Cat> findByCoats(@RequestParam String coats) {
-        return catMapper.findByCoats(coats);
+        return catService.findByCoats(coats);
     }
 }

@@ -20,10 +20,6 @@ public class CatService {
 
     public Cat findCat(Integer id) {
         Optional<Cat> cat = catMapper.findById(id);
-        if (cat.isPresent()) {
-            return cat.get();
-        } else {
-            throw new CatNotFoundException("そのIDは存在しません。");
-        }
+        return cat.orElseThrow(() -> new CatNotFoundException("そのIDは存在しません。"));
     }
 }
